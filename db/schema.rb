@@ -16,10 +16,12 @@ ActiveRecord::Schema.define(:version => 20120730181059) do
   create_table "polls", :force => true do |t|
     t.string   "name"
     t.string   "slug"
+    t.string   "admin_slug"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
+  add_index "polls", ["admin_slug"], :name => "index_polls_on_admin_slug", :unique => true
   add_index "polls", ["slug"], :name => "index_polls_on_slug", :unique => true
 
 end

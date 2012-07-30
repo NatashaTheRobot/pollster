@@ -32,9 +32,10 @@ class PollsController < ApplicationController
     end
   end
 
-  # GET /polls/1/edit
+  # GET /polls/:admin_slug/edit
   def edit
-    @poll = Poll.find(params[:id])
+    @poll = Poll.find_by_admin_slug(params[:admin_slug])
+    p @poll
   end
 
   # POST /polls
@@ -60,7 +61,7 @@ class PollsController < ApplicationController
 
     respond_to do |format|
       if @poll.update_attributes(params[:poll])
-        format.html { redirect_to @poll, notice: 'Poll was successfully updated.' }
+        format.html { redirect_to "/#{@poll.slug}", notice: 'Poll was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
