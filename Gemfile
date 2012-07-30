@@ -2,6 +2,7 @@ source :rubygems
 
 gem 'rails', '3.2.7'
 gem 'haml'
+gem 'bootstrap-sass', '2.0.0'
 
 
 group :development, :test do

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @poll.name %>
+</p>
+
+<p>
+	<b>Poll Link:</b>
+	<%= "#{root_url}#{@poll.slug}"%>
+</p>
+
+<%= link_to 'Edit', edit_poll_path(@poll) %> |
+<%= link_to 'Back', polls_path %>
