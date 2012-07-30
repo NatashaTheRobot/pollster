@@ -14,9 +14,9 @@
     <td><%= poll.name %></td>
     <td><%= poll.slug %></td>
 	<td><%= poll.admin_slug %></td>
-    <td><%= link_to 'Show', poll %></td>
-    <td><%= link_to 'Edit', edit_poll_path(poll) %></td>
-    <td><%= link_to 'Destroy', poll, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', poll_path(poll.slug) %></td>
+    <td><%= link_to 'Edit', edit_poll_path(poll.admin_slug) %></td>
+    <td><%= link_to 'Destroy', delete_poll_path(poll.admin_slug), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

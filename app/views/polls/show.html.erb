@@ -15,5 +15,5 @@
 	<%= "#{root_url}polls/#{@poll.admin_slug}/edit"%>
 </p>
 
-<%= link_to 'Edit', edit_poll_path(@poll) %> |
+<%= link_to 'Edit', edit_poll_path(@poll.admin_slug) %> |
 <%= link_to 'Back', polls_path %>

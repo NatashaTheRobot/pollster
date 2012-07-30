@@ -17,7 +17,7 @@ class PollsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @poll }
+      format.json { render json: poll_path(@poll.slug) }
     end
   end
 
@@ -28,14 +28,13 @@ class PollsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @poll }
+      format.json { render json: poll_path(@poll.slug) }
     end
   end
 
   # GET /polls/:admin_slug/edit
   def edit
     @poll = Poll.find_by_admin_slug(params[:admin_slug])
-    p @poll
   end
 
   # POST /polls
@@ -45,8 +44,8 @@ class PollsController < ApplicationController
 
     respond_to do |format|
       if @poll.save
-        format.html { redirect_to "/#{@poll.slug}", notice: 'Poll was successfully created.' }
-        format.json { render json: "/#{@poll.slug}", status: :created, location: @poll }
+        format.html { redirect_to poll_path(@poll.slug), notice: 'Poll was successfully created.' }
+        format.json { render json: poll_path(@poll.slug), status: :created, location: @poll }
       else
         format.html { render action: "new" }
         format.json { render json: @poll.errors, status: :unprocessable_entity }
@@ -54,14 +53,14 @@ class PollsController < ApplicationController
     end
   end
 
-  # PUT /polls/1
-  # PUT /polls/1.json
+  # PUT /polls/:admin_slug
+  # PUT /polls/:adming_slug.json
   def update
-    @poll = Poll.find(params[:id])
-
+    p '*' * 100
+    @poll = Poll.find_by_admin_slug(params[:admin_slug])
     respond_to do |format|
       if @poll.update_attributes(params[:poll])
-        format.html { redirect_to "/#{@poll.slug}", notice: 'Poll was successfully updated.' }
+        format.html { redirect_to poll_path(@poll.slug), notice: 'Poll was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -70,14 +69,14 @@ class PollsController < ApplicationController
     end
   end
 
-  # DELETE /polls/1
+  # DELETE /polls/:admin_slug
   # DELETE /polls/1.json
   def destroy
-    @poll = Poll.find(params[:id])
+    @poll = Poll.find_by_admin_slug(params[:admin_slug])
     @poll.destroy
 
     respond_to do |format|
-      format.html { redirect_to polls_url }
+      format.html { redirect_to new_poll_path }
       format.json { head :no_content }
     end
   end

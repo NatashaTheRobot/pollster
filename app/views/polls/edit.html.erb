@@ -1,6 +1,6 @@
 <h1>Editing poll</h1>
 
-<%= render 'form' %>
+<%= render 'edit_form' %>
 
-<%= link_to 'Show', @poll %> |
+<%= link_to 'Show', poll_path(@poll.slug) %>
 <%= link_to 'Back', polls_path %>
