@@ -19,10 +19,6 @@
 $(function() {
 	var numFields = 1
 	
-	function isEnoughFields(){
-		
-	}
-	
 	function addField(){
 		$('#question' + numFields).unbind('keypress')
 		numFields ++
