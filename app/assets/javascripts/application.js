@@ -29,7 +29,8 @@ $(function() {
 	};
 	
 	function appendHandlerToFields(){
-		$('#question' + numFields).keypress(function() {
+		var question = '#question' + numFields;
+		$(question).keypress(function() {
 				addField();
 		});
 	};
