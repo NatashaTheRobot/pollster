@@ -10,8 +10,33 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+//= require bootstrap
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
 //= require_tree .
 
+
+$(function() {
+	var numFields = 1
+	
+	function isEnoughFields(){
+		
+	}
+	
+	function addField(){
+		numFields ++
+		//Check to ensure we don't already have enough fields, if we don't add a field
+		$('#questions' + numFields - 1).unbind('keypress')
+		var id = 'question' + numFields
+		$('.questions').append('<input type="text" id=' + id + '>');
+		appendHandlerToFields();
+	}
+	
+	function appendHandlerToFields(){
+		$('#question' + numFields).keypress(function() {
+				addField();
+		});
+	}
+	
+	appendHandlerToFields();
+});
