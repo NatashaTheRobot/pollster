@@ -25,13 +25,13 @@ $(function() {
 		var id = 'question' + numFields;
 		$('.questions').append('<input type="text" id=' + id + '>');
 		appendHandlerToFields();
-	}
+	};
 	
 	function appendHandlerToFields(){
 		$('#question' + numFields).keypress(function() {
 				addField();
 		});
-	}
+	};
 	
 	appendHandlerToFields();
 });
