@@ -5,7 +5,7 @@ $(function() {
 		$(question = '#question' + numFields).unbind('keypress');
 		numFields ++;
 		var id = 'question' + numFields;
-		$('.questions').append('<input type="text" id=' + id + '><br/>');
+		$('<br /><input type="text" id=' + id + '>').insertAfter('#question' + (numFields - 1));
 		appendHandlerToFields();
 	};
 	
