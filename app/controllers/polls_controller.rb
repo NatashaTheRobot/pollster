@@ -41,9 +41,14 @@ class PollsController < ApplicationController
   # POST /polls.json
   def create
     @poll = Poll.new(params[:poll])
-
+    
     respond_to do |format|
       if @poll.save
+        
+        (1..params.length - 4).each do |num| 
+          @poll.questions.create(text: params["question#{num}".to_sym])
+        end
+        
         format.html { redirect_to new_poll_question_path(@poll), notice: 'Poll was successfully created.' }
         format.json { render json: new_poll_question_path(@poll), status: :created, location: @poll }
       else
