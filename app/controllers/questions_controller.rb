@@ -1,7 +1,6 @@
 class QuestionsController < ApplicationController
-  def new
+  def index
     @poll = Poll.find(params[:poll_id])
-    @question = @poll.questions.build
   end
   
   def create

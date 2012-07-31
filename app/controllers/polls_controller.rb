@@ -49,8 +49,8 @@ class PollsController < ApplicationController
           @poll.questions.create(text: params["question#{num}".to_sym])
         end
         
-        format.html { redirect_to new_poll_question_path(@poll), notice: 'Poll was successfully created.' }
-        format.json { render json: new_poll_question_path(@poll), status: :created, location: @poll }
+        format.html { redirect_to poll_questions_path(@poll), notice: 'Poll was successfully created.' }
+        format.json { render json: poll_questions_path(@poll), status: :created, location: @poll }
       else
         format.html { render action: "new" }
         format.json { render json: @poll.errors, status: :unprocessable_entity }
