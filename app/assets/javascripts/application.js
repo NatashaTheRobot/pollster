@@ -20,8 +20,8 @@ $(function() {
 	var numFields = 1
 	
 	function addField(){
-		$('#question' + numFields).unbind('keypress')
-		numFields ++
+		$('#question' + numFields).unbind('keypress');
+		numFields ++;
 		var id = 'question' + numFields;
 		$('.questions').append('<input type="text" id=' + id + '>');
 		appendHandlerToFields();
