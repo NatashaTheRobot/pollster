@@ -24,10 +24,9 @@ $(function() {
 	}
 	
 	function addField(){
+		$('#question' + numFields).unbind('keypress')
 		numFields ++
-		//Check to ensure we don't already have enough fields, if we don't add a field
-		$('#questions' + numFields - 1).unbind('keypress')
-		var id = 'question' + numFields
+		var id = 'question' + numFields;
 		$('.questions').append('<input type="text" id=' + id + '>');
 		appendHandlerToFields();
 	}
