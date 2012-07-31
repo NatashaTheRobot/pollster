@@ -9,7 +9,5 @@ Pollster::Application.routes.draw do
     resources :questions
   end
   get '/polls/:slug' => "polls#show", as: "poll"
-  
-  #questions resource
-  #resources :questions
+
 end
