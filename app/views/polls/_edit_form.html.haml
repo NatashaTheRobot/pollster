@@ -1,0 +1,15 @@
+= form_for(@poll, url: update_poll_path(@poll.admin_slug)) do |f|
+- if @poll.errors.any?
+  #error_explanation
+    %h2
+      = pluralize(@poll.errors.count, "error")
+      prohibited this poll from being saved:
+    %ul
+      - @poll.errors.full_messages.each do |msg|
+        %li= msg
+.field
+  = f.label :name
+  %br/
+  = f.text_field :name
+.actions
+  = f.submit

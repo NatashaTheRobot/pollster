@@ -1,6 +1,6 @@
 class Poll < ActiveRecord::Base
   attr_accessible :name, :slug, :admin_slug
-  before_save :set_slugs
+  before_create :set_slugs
   has_many :questions
   validates :name, presence: true
   
