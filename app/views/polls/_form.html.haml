@@ -14,6 +14,8 @@
   .questions
     %h4 Questions
     %br/
-    = text_field_tag :question1
+    = f.fields_for :questions do |q|
+      = q.label :text
+      = q.text_field :text
   .actions
     = f.submit "Create Poll", class: "btn btn-success btn-medium"

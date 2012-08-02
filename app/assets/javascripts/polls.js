@@ -1,17 +1,18 @@
 $(function() {
-	var numFields = 1
-	
+	var numFields = 0;
 	function appendHandlerToFields(){
-		$('#question' + numFields).keypress(function() {
+		
+		$('#poll_questions_attributes_' + numFields + '_text').keypress(function() {
 				addField();
 		});
 	};
 	
 	function addField(){
-		$(question = '#question' + numFields).unbind('keypress');
+		$('#poll_questions_attributes_' + numFields + '_text').unbind('keypress');
 		numFields ++;
-		var id = 'question' + numFields;
-		$('<br /><input type="text" id=' + id + ' name=' + id +'>').insertAfter('#question' + (numFields - 1));
+		var id = 'poll_questions_attributes_' + numFields + '_text';
+		var name = 'poll[questions_attributes][' + numFields +'][text]';
+		$('<br /><input id=' + id + ' name=' + name + ' size="30" type="text">').insertAfter('#poll_questions_attributes_' + (numFields - 1) + '_text');
 		appendHandlerToFields();
 	};
 	

@@ -1,8 +1,9 @@
 class Poll < ActiveRecord::Base
-  attr_accessible :name, :slug, :admin_slug
+  attr_accessible :name, :slug, :admin_slug, :questions_attributes
   before_create :set_slugs
-  has_many :questions
+  has_many :questions, dependent: :destroy
   validates :name, presence: true
+  accepts_nested_attributes_for :questions
   
   private
   def set_slugs
