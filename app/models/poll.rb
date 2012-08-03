@@ -3,7 +3,7 @@ class Poll < ActiveRecord::Base
   before_create :set_slugs
   has_many :questions, dependent: :destroy
   validates :name, presence: true
-  accepts_nested_attributes_for :questions
+  accepts_nested_attributes_for :questions, reject_if: proc { |question| question[:text].blank? }
   
   private
   def set_slugs
